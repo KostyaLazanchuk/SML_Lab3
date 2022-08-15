@@ -1,7 +1,7 @@
 fun same_string(s1 : string, s2 : string) =
     s1 = s2
     
-(*Task 1.a*)
+(*Task 1 a*)
 fun all_except_option (str, sl) =
   case sl of
     [] => NONE
@@ -11,7 +11,7 @@ fun all_except_option (str, sl) =
                               NONE => NONE
                               | SOME y => SOME(x::y) 
 
-(*Task 2.b*)
+(*Task 2 b*)
 fun get_substitutions1 (subs, str) =
 	case subs of
 		[] => []
@@ -21,7 +21,7 @@ fun get_substitutions1 (subs, str) =
 			|	SOME lst => lst @ get_substitutions1(xs, str)
 
 
-(*Task 3.c*)
+(*Task 3 c*)
 fun get_substitutions2 (subs, str) =
 	let fun f (xs, acc) =
 		case xs of
@@ -35,7 +35,7 @@ fun get_substitutions2 (subs, str) =
 	end
 
 
-(*Task 4.d*)
+(*Task 4 d*)
 fun similar_names (ssl: string list list, {first=f, middle=m, last=z}) = 
   let
    fun fn_it (sl:string list) = 
@@ -58,7 +58,7 @@ datatype move = Discard of card | Draw
 exception IllegalMove
 
 
-(*Task 21.a*)
+(*Task 21 a*)
 fun card_color (s:suit, r:rank) = 
   case s of 
     Clubs => Black 
@@ -68,7 +68,7 @@ fun card_color (s:suit, r:rank) =
    
 
 
-(*Task 22.b*)
+(*Task 22 b*)
 fun card_value (s:suit, r:rank) = 
   case r of 
     Ace => 11
@@ -76,7 +76,7 @@ fun card_value (s:suit, r:rank) =
     | _ => 10
 
 
-(*Task 23.c*)
+(*Task 23 c*)
 fun remove_card (cards, c, ex) =
     case cards of
         [] => raise ex
@@ -86,7 +86,7 @@ fun remove_card (cards, c, ex) =
         else x :: remove_card(xs, c, ex)
 
 
-(*Task 24.d*)
+(*Task 24 d*)
 fun all_same_color (cards: card list) = 
     case cards of 
       [] => true
@@ -94,7 +94,7 @@ fun all_same_color (cards: card list) =
       | c1::(c2::cards') => card_color(c1) = card_color(c2) andalso all_same_color(c2::cards')
 
 
-(*Task 25.e*)
+(*Task 25 e*)
 fun sum_cards (cards: card list) = 
   let
    fun local_func (cards: card list, accu) = 
@@ -105,7 +105,7 @@ fun sum_cards (cards: card list) =
     local_func(cards, 0)
   end
 
-(*Task 26.f*)
+(*Task 26 f*)
 fun score (cards: card list, goal) = 
    let
       val sum = sum_cards(cards)
@@ -114,7 +114,7 @@ fun score (cards: card list, goal) =
       if all_same_color(cards) then pre div 2 else pre
    end
 
-(*Task 27.g*)
+(*Task 27 g*)
 fun officiate (cards: card list, ds: move list, goal) = 
     let
       fun local_func (cards: card list, ds: move list, accu_cards: card list) =
